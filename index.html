@@ -29,24 +29,16 @@
 </head>
 
 <body>
-    <div class="container bg-secondary d-flex flex-column justify-content-center align-items-center h-100">
+    <div id="root" class="container bg-secondary d-flex flex-column justify-content-center align-items-center h-100">
         <h1 class="text-light m-0">EMAILS GENERATOR</h1>
-        <div class="emails-list w-25">
+        <i v-if="isLoading" class="fa-solid fa-spinner fa-spin-pulse fa-custm"></i>
+        <div v-if="emails.length > 9" class="emails-list">
             <ul class="list-group p-5">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+                <li v-for="email in emails" class="list-group-item">{{email}}</li>
             </ul>
         </div>
         <div class="text-center">
-            <button type="button" class="btn btn-light p-3">Generate Emails</button>
+            <button @click="getTenEmails" type="button" class="btn btn-light mt-4 p-3">Generate Emails</button>
         </div>
 
 
